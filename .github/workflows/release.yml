@@ -1,11 +1,5 @@
-
-# release.yml
 name: Release to Chrome Web Store
 
-#on:
-#  push:
-#    tags:
-#      - 'v*'  # vで始まるタグがプッシュされたときにトリガーされる
 on:
   push:
     branches:
@@ -24,20 +18,29 @@ jobs:
           with:
               node-version: 16
 
+        - name: Install pnpm
+          uses: pnpm/action-setup@v2
+          with:
+            version: 10  # または、あなたのプロジェクトで使用している pnpm のバージョン
+
         - name: Install dependencies
-          run: npm install
+          run: pnpm install --no-frozen-lockfile
+
+        # 以下、元のワークフローの残りの部分...
 
         - name: Debug Git status
           run: git status
 
         - name: Run build step
-          run: wxt build
+          run: pnpm run wxt build
 
         - name: Debug build step
           run: ls -al
 
         - name: Run zip step
-          run: wxt zip
+          run: pnpm run wxt zip
+
+        # ... 残りのステップも同様に pnpm run に変更
 
         - name: Debug zip step
           run: ls -al
@@ -46,13 +49,13 @@ jobs:
           run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
 
         - name: Run dryrun script
-          run: wxt dryrun
+          run: pnpm wxt dryrun
 
         - name: Debug dryrun script
           run: ls -al
 
         - name: Run submit script
-          run: wxt submit
+          run: pnpm wxt submit
 
         - name: Debug submit script
           run: ls -al
