@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@utility gutter-stable {
+  scrollbar-gutter: stable;
+}
