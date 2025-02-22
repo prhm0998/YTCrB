@@ -1,0 +1,62 @@
+# release.yml
+name: Release to Chrome Web Store
+
+on:
+  push:
+    branches:
+      - 'test/release-workflow-test'  # 'test/release-workflow-test' ブランチへのプッシュ
+    tags:
+      - 'v*'  # 'v' で始まるタグがプッシュされたときにトリガーされる
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+              node-version: 22 # pnpmを使用するなら新し目のバージョンが必要
+
+        - name: Install pnpm
+          uses: pnpm/action-setup@v4
+          with:
+            version: 10
+
+        - name: Install dependencies
+          run: pnpm install --no-frozen-lockfile
+
+        # 以下、元のワークフローの残りの部分...
+
+        - name: Debug Git status
+          run: git status
+
+        - name: Run build step
+          run: pnpm build
+
+        - name: Debug build step
+          run: ls -al
+
+        - name: Run zip step
+          run: pnpm zip
+
+        - name: Debug zip step
+          run: ls -al
+
+        - name: Create .env.submit
+          run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
+
+        - name: Run dryrun-unix script
+          run: pnpm dryrun-unix
+
+        - name: Debug dryrun-unix script
+          run: ls -al
+
+        - name: Run submit-unix script
+          run: pnpm submit-unix
+
+        - name: Debug submit-unix script
+          run: ls -al
