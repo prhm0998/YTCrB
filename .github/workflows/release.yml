@@ -1,3 +1,4 @@
+# release.yml
 name: Release to Chrome Web Store
 
 on:
@@ -48,14 +49,14 @@ jobs:
         - name: Create .env.submit
           run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
 
-        - name: Run dryrun script
-          run: pnpm dryrun
+        - name: Run dryrun-unix script
+          run: pnpm dryrun-unix
 
-        - name: Debug dryrun script
+        - name: Debug dryrun-unix script
           run: ls -al
 
-        - name: Run submit script
-          run: pnpm submit
+        - name: Run submit-unix script
+          run: pnpm submit-unix
 
-        - name: Debug submit script
+        - name: Debug submit-unix script
           run: ls -al
