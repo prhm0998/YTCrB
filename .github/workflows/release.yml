@@ -48,7 +48,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: chrome-extension-zip
+          name: ${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome
           path: .output/${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome.zip
 
       - name: Run dryrun-unix script
