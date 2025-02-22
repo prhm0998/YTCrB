@@ -16,8 +16,8 @@
     "compile": "vue-tsc --noEmit",
     "postinstall": "wxt prepare",
     "eslint": "eslint",
-    "dryrun": "wxt submit --dry-run --chrome-zip .output/%npm_package_name%-%npm_package_version%-chrome.zip",
-    "submit": "wxt submit --chrome-zip .output/%npm_package_name%-%npm_package_version%-chrome.zip",
+    "dryrun-win": "wxt submit --dry-run --chrome-zip .output/%npm_package_name%-%npm_package_version%-chrome.zip",
+    "submit-win": "wxt submit --chrome-zip .output/%npm_package_name%-%npm_package_version%-chrome.zip",
     "dryrun-unix": "wxt submit --dry-run --chrome-zip .output/${npm_package_name}-${npm_package_version}-chrome.zip",
     "submit-unix": "wxt submit --chrome-zip .output/${npm_package_name}-${npm_package_version}-chrome.zip"
   },

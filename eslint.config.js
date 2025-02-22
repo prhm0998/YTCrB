@@ -15,7 +15,6 @@ const compat = new FlatCompat()
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  ...compat.extends('plugin:vue-pug/vue3-recommended'),
   {
     ignores: [
       'dist/**/*',
@@ -23,6 +22,7 @@ export default [
       '.wxt/**/*']
   },
   { languageOptions: { globals: globals.browser } },
+  ...compat.extends('plugin:vue-pug/vue3-recommended'),
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
