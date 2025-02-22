@@ -1,10 +1,9 @@
-# release.yml
 name: Release to Chrome Web Store
 
 on:
   push:
     branches:
-      - 'test/release-workflow-test'  # 'test/release-workflow-test' ブランチへのプッシュ
+      - 'test/fix-workflow-import-env'
     tags:
       - 'v*'  # 'v' で始まるタグがプッシュされたときにトリガーされる
 
@@ -13,50 +12,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v4
-          with:
-              node-version: 22 # pnpmを使用するなら新し目のバージョンが必要
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-        - name: Install pnpm
-          uses: pnpm/action-setup@v4
-          with:
-            version: 10
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
-        - name: Install dependencies
-          run: pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
 
-        # 以下、元のワークフローの残りの部分...
+      - name: Load npm package metadata
+        run: |
+          echo "PACKAGE_NAME=$(jq -r .name package.json)" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
-        - name: Debug Git status
-          run: git status
+      - name: Create .env
+        run: echo "${{ secrets.ENV }}" > .env
 
-        - name: Run build step
-          run: pnpm build
+      - name: Create .env.submit
+        run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
 
-        - name: Debug build step
-          run: ls -al
+      - name: Run build step
+        run: pnpm build
 
-        - name: Run zip step
-          run: pnpm zip
+      - name: Run zip step
+        run: pnpm zip
 
-        - name: Debug zip step
-          run: ls -al
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        env:
+          PACKAGE_NAME: ${{ env.PACKAGE_NAME }}
+          PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
+        with:
+          # name: download-zip # 保存ファイル名を指定する場合、拡張子不要
+          path: .output/${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome.zip
 
-        - name: Create .env.submit
-          run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
+      - name: Run dryrun-unix script
+        run: pnpm dryrun-unix
 
-        - name: Run dryrun-unix script
-          run: pnpm dryrun-unix
-
-        - name: Debug dryrun-unix script
-          run: ls -al
-
-        - name: Run submit-unix script
-          run: pnpm submit-unix
-
-        - name: Debug submit-unix script
-          run: ls -al
+      - name: Run submit-unix script
+        run: pnpm submit-unix
