@@ -48,8 +48,9 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome
-          path: .output/${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome.zip
+          name: $PACKAGE_NAME-$PACKAGE_VERSION-chrome
+          path: .output/$PACKAGE_NAME-$PACKAGE_VERSION-chrome.zip
+          # path: .output/${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome.zip
 
       - name: Run dryrun-unix script
         run: pnpm dryrun-unix
