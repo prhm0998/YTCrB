@@ -4,7 +4,9 @@ name: Release to Chrome Web Store
 on:
   push:
     branches:
-      - 'test/release-workflow-test'
+      - 'test/release-workflow-test'  # 'test/release-workflow-test' ブランチへのプッシュ
+    tags:
+      - 'v*'  # 'v' で始まるタグがプッシュされたときにトリガーされる
 
 jobs:
   release:
@@ -17,7 +19,7 @@ jobs:
         - name: Set up Node.js
           uses: actions/setup-node@v4
           with:
-              node-version: 18
+              node-version: 22
 
         - name: Install pnpm
           uses: pnpm/action-setup@v2
@@ -40,8 +42,6 @@ jobs:
 
         - name: Run zip step
           run: pnpm zip
-
-        # ... 残りのステップも同様に pnpm run に変更
 
         - name: Debug zip step
           run: ls -al
