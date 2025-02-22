@@ -32,13 +32,13 @@ jobs:
           run: git status
 
         - name: Run build step
-          run: pnpm run wxt build
+          run: run wxt build
 
         - name: Debug build step
           run: ls -al
 
         - name: Run zip step
-          run: pnpm run wxt zip
+          run: run wxt zip
 
         # ... 残りのステップも同様に pnpm run に変更
 
@@ -49,13 +49,13 @@ jobs:
           run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
 
         - name: Run dryrun script
-          run: pnpm wxt dryrun
+          run: wxt dryrun
 
         - name: Debug dryrun script
           run: ls -al
 
         - name: Run submit script
-          run: pnpm wxt submit
+          run: wxt submit
 
         - name: Debug submit script
           run: ls -al
