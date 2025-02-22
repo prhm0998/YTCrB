@@ -1,0 +1,58 @@
+
+# release.yml
+name: Release to Chrome Web Store
+
+#on:
+#  push:
+#    tags:
+#      - 'v*'  # vで始まるタグがプッシュされたときにトリガーされる
+on:
+  push:
+    branches:
+      - 'test/release-workflow-test'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v4
+          with:
+              node-version: 16
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: Debug Git status
+          run: git status
+
+        - name: Run build step
+          run: wxt build
+
+        - name: Debug build step
+          run: ls -al
+
+        - name: Run zip step
+          run: wxt zip
+
+        - name: Debug zip step
+          run: ls -al
+
+        - name: Create .env.submit
+          run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
+
+        - name: Run dryrun script
+          run: wxt dryrun
+
+        - name: Debug dryrun script
+          run: ls -al
+
+        - name: Run submit script
+          run: wxt submit
+
+        - name: Debug submit script
+          run: ls -al
