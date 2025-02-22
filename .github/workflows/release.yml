@@ -3,7 +3,7 @@ name: Release to Chrome Web Store
 on:
   push:
     branches:
-      - 'test/fix-workflow-import-env'  # テストブランチでのpushはすぐ実行
+      - 'test/fix-workflow-import-env'
     tags:
       - 'v*'  # 'v' で始まるタグがプッシュされたときにトリガーされる
 
@@ -29,10 +29,15 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Load npm package metadata
-        id: package_metadata
         run: |
           echo "PACKAGE_NAME=$(jq -r .name package.json)" >> $GITHUB_ENV
           echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+      - name: Create .env
+        run: echo "${{ secrets.ENV }}" > .env
+
+      - name: Create .env.submit
+        run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
 
       - name: Run build step
         run: pnpm build
@@ -43,10 +48,8 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          path: .output/${{ steps.package_metadata.outputs.PACKAGE_NAME }}-${{ steps.package_metadata.outputs.PACKAGE_VERSION }}-chrome.zip
-
-      - name: Create .env.submit
-        run: echo "${{ secrets.ENV_SUBMIT }}" > .env.submit
+          name: chrome-extension-zip
+          path: .output/${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}-chrome.zip
 
       - name: Run dryrun-unix script
         run: pnpm dryrun-unix
