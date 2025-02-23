@@ -1,6 +1,8 @@
 import useStoredValue from './useStoredValue'
 import { useDebounceFn } from '@vueuse/core'
 import { getDefaultUserOption } from '@/utils/defaultUserOption'
+import filterProperties from '@/utils/filterPropertiers'
+import applyDefaultProperties from '@/utils/applyDefaultProperties'
 
 export interface UserOption {
   enabled: boolean
@@ -26,8 +28,10 @@ export default function () {
   const deserialize = (jsonString: string): UserOption => {
     try {
       const parsed = JSON.parse(jsonString) as Partial<UserOption>
+      // 不要なプロパティを削除
+      const filterd = filterProperties(parsed, defaultUserOption)
       // jsonにないプロパティはデフォルトから持ってくる
-      return Object.assign({}, getDefaultUserOption(), parsed)
+      return applyDefaultProperties(filterd, defaultUserOption)
     }
     catch {
       return getDefaultUserOption()
