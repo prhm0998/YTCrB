@@ -27,6 +27,6 @@ jobs:
           npm version patch --no-git-tag-version
 
           # 変更をコミットしてプッシュ
-          git add package.json package-lock.json
+          git add package.json pnpm-lock.yaml
           git commit -m "chore: bump patch version [skip ci]"
           git push origin main
