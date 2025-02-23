@@ -1,0 +1,32 @@
+name: Bump Patch Version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Bump patch version
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # パッチバージョンをインクリメント
+          npm version patch --no-git-tag-version
+
+          # 変更をコミットしてプッシュ
+          git add package.json package-lock.json
+          git commit -m "chore: bump patch version [skip ci]"
+          git push origin main
