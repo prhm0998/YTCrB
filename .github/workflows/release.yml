@@ -5,7 +5,7 @@ on:
     branches:
       - 'test/fix-workflow-import-env'
     tags:
-      - 'v*'  # 'v' で始まるタグがプッシュされたときにトリガーされる
+      - 'v[0-9]+.[0-9]+.0'  # minor以上のアップデートをトリガーにする
 
 jobs:
   release:
