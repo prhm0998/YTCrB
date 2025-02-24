@@ -60,37 +60,33 @@ const isLongId = (length: number) => {
 </script>
 
 <template>
-  <div class="w-[520px] h-[420px] flex flex-col box-border">
+  <div class="box-border flex flex-col h-[420px] w-[520px]">
     <Header :model-value="modelValue.name" />
     <div class="flex items-center justify-center">
       <input :id="modelValue.name" ref="inputRef" v-model="userInput" name="YTCrB"
         :placeholder="`Enter Ignore ${modelValue.name}`" type="text"
-        class="flex-1 mb-2 mx-2 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        class="bg-gray-100 block border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-blue-500 dark:placeholder-gray-400 dark:text-gray-400 flex-1 focus:border-blue-500 focus:ring-blue-500 mb-2 mx-2 p-2.5 rounded-lg text-gray-900 text-sm w-full"
         @keydown.enter="submitIgnore">
-      <button type="button" :disabled="!validateUserInput" class="h-8 px-5 text-blue-500 text-xs enabled:hover:text-white border border-gray-800
-        enabled:hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-gray-300
-        font-medium rounded-lg me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white
-        dark:hover:bg-gray-600 dark:focus:ring-gray-800 disabled:text-gray-500
-        disabled:shadow-none disabled:cursor-not-allowed dark:disabled:border-gray-700" @click="submitIgnore">
+      <button type="button" :disabled="!validateUserInput" class="border border-gray-800 dark:border-gray-600 dark:disabled:border-gray-700 dark:focus:ring-gray-800 dark:hover:bg-gray-600 dark:hover:text-white dark:text-gray-400 disabled:cursor-not-allowed disabled:shadow-none disabled:text-gray-500 enabled:hover:bg-blue-400 enabled:hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium h-8 mb-2 me-2 px-5 rounded-lg text-blue-500 text-xs" @click="submitIgnore">
         登録
       </button>
     </div>
-    <div class="flex-grow overflow-y-auto gutter-stable">
-      <hr class="r-t-2 border-[#f7eddd] my-2.5" />
+    <div class="flex-grow gutter-stable overflow-y-auto">
+      <hr class="border-[#f7eddd] my-2.5 r-t-2" />
       <div v-for="(key, index) in [...state.values()]" :key="index" class="mb-2.5">
         <!-- 長い名前用 -->
-        <div v-if="isLongId(key.id.length)" class="cursor-pointer select-none  bg-green-50" @click="dataEdit(key.id)">
-          <div class="font-bold break-words">{{ key.id }}</div>
+        <div v-if="isLongId(key.id.length)" class="bg-green-50 cursor-pointer select-none" @click="dataEdit(key.id)">
+          <div class="break-words font-bold">{{ key.id }}</div>
         </div>
         <div class="flex items-center justify-end">
-          <div v-if="!isLongId(key.id.length)" class="flex-1 font-bold break-words" @click="dataEdit(key.id)">
+          <div v-if="!isLongId(key.id.length)" class="break-words flex-1 font-bold" @click="dataEdit(key.id)">
             {{ key.id }}
           </div>
-          <div class="italic ">Submit At: {{ key.submitAt.format("YY/MM/DD") }}</div>
+          <div class="italic">Submit At: {{ key.submitAt.format("YY/MM/DD") }}</div>
           <span class="mx-2">Last Find: {{ now.diff(key.lastFindAt, 'd') }} days ago</span>
           <RemoveButton :id="key.id" :remove="remove" />
         </div>
-        <hr class="border-0 border-t-2 border-[#f7eddd] my-2.5" />
+        <hr class="border-0 border-[#f7eddd] border-t-2 my-2.5" />
       </div>
     </div>
   </div>

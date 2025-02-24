@@ -22,10 +22,10 @@ const activeTab = ref<TabType>(tabs[0])
 <template>
   <div class="tab-container">
     <div class="border-b border-gray-200 dark:border-gray-700">
-      <ul class="flex flex-wrap gap-3 text-lg font-medium text-gray-500 dark:text-gray-400">
+      <ul class="dark:text-gray-400 flex flex-wrap font-medium gap-3 text-gray-500 text-lg">
         <li v-for="tab in tabs" :key="tab.key" class="me-2" @click="activeTab = tab">
           <a href="#"
-            class="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg select-none hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">
+            class="border-b-2 border-transparent dark:hover:text-gray-300 hover:border-gray-300 hover:text-gray-600 inline-flex items-center justify-center p-4 rounded-t-lg select-none">
             <IconGear v-if="tab.name === `Option`" class="mr-2" color="#393f4c" />
             <IconPenOff v-if="tab.name === `Word`" class="mr-2" color="#393f4c" />
             <IconRaiseHandOff v-if="tab.name === `Name`" class="mr-2" color="#393f4c" />
@@ -33,7 +33,7 @@ const activeTab = ref<TabType>(tabs[0])
           </a>
         </li>
       </ul>
-      <div class="tab-content px-2">
+      <div class="px-2 tab-content">
         <IgnoreList v-if="activeTab.key === 'local:Word'" ref="ignoreListRef" :model-value="activeTab" :regexp="true"
           :edit="true" />
         <IgnoreList v-else-if="activeTab.key === 'local:Name'" ref="ignoreListRef" :model-value="activeTab" />

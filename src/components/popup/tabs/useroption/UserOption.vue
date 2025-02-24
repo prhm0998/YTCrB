@@ -22,7 +22,7 @@ const options: UserOptionEntry[] = [
 </script>
 
 <template>
-  <div class="w-[520px] h-[420px] flex flex-col box-border">
+  <div class="box-border flex flex-col h-[420px] w-[520px]">
     <Header />
     <div v-if="state" class="flex flex-col flex-grow gap-2">
       <Checkbox v-for="option in options" :id="option.key" :key="option.key" :label="option.label"
