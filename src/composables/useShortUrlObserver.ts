@@ -11,8 +11,7 @@ export default function useUrlObserver(taregetUrl: string, callback: () => void)
   let prevHref = '' // 初回読み込み時にcallbakを実行する必要がある場合は空白をセット
   const run = useDebounceFn(() =>
     callback()
-    , 300
-  )
+    , 300)
 
   const urlObserver = new MutationObserver(() => {
     //https://www.youtube.com/watch?v=

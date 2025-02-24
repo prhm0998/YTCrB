@@ -26,7 +26,6 @@ export default function useIgnoreWordsReg(
         key,
         regExp: new RegExp(normalizedKey, option.value.useCaseInsensitive ? 'i' : '')
       } as IgnoreWordReg
-    })
-  )
+    }))
   return { ignoreWordReg }
 }
