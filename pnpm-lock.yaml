@@ -51,6 +51,9 @@ importers:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.20.0
+      '@stylistic/eslint-plugin-js':
+        specifier: ^4.0.1
+        version: 4.0.1(eslint@9.20.1(jiti@1.21.7))
       '@types/chrome':
         specifier: ^0.0.280
         version: 0.0.280
@@ -838,6 +841,12 @@ packages:
   '@sindresorhus/is@5.6.0':
     resolution: {integrity: sha512-TV7t8GKYaJWsn00tFDqBw8+Uqmr8A0fRU1tvTQhyZzGv0sJCGRQL3JGMI3ucuKo3XIZdUP+Lx7/gh2t3lewy7g==}
     engines: {node: '>=14.16'}
+
+  '@stylistic/eslint-plugin-js@4.0.1':
+    resolution: {integrity: sha512-2EGKM6WHnZSidWKCu6ePJCqdpgWiEU1Bt26ktWEfTpCmRP+2vRQ6ViK8X6DLwu4+F0zPLy/Txe2HhI3qJFUvqA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: '>=9.0.0'
 
   '@szmarczak/http-timer@5.0.1':
     resolution: {integrity: sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==}
@@ -4246,6 +4255,12 @@ snapshots:
   '@rtsao/scc@1.1.0': {}
 
   '@sindresorhus/is@5.6.0': {}
+
+  '@stylistic/eslint-plugin-js@4.0.1(eslint@9.20.1(jiti@1.21.7))':
+    dependencies:
+      eslint: 9.20.1(jiti@1.21.7)
+      eslint-visitor-keys: 4.2.0
+      espree: 10.3.0
 
   '@szmarczak/http-timer@5.0.1':
     dependencies:
