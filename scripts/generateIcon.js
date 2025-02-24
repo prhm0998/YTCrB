@@ -22,4 +22,6 @@ async function generateIcons() {
   }
 }
 
-await generateIcons()
+(async () => {
+  await generateIcons();
+})();
