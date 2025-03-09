@@ -16,9 +16,10 @@ export function useBannedProcess(
         const { useWordSensitive,
           useTempraryWordSensitive,
           useMentionSensitive,
-          useTempraryMensionSensitive,
-          useInvalidMentionSensitive,
-          useTempraryInvalidMentionSensitive } = newUserOption
+          useTempraryMensionSensitive
+          // useInvalidMentionSensitive,
+          // useTempraryInvalidMentionSensitive
+        } = newUserOption
         switch (newResult?.type) {
           case 'Word':
             // 禁止ワードに抵触した
@@ -56,19 +57,19 @@ export function useBannedProcess(
             // 一時的に禁止のユーザーの発言をすべて非表示
             ycomment.elm.style.display = 'none'
             break
-          case 'InvalidMention':
-            // 存在しないユーザー宛のメンションを使用
-            if (useInvalidMentionSensitive) {
-              // 存在しないユーザーに対してメンションを送ったユーザーを永続的に禁止
-              upsertName(newResult.author)
-              ycomment.elm.style.display = 'none'
-            }
-            else if (useTempraryInvalidMentionSensitive) {
-              // 存在しないユーザーに対してメンションを送ったユーザーを一時的に禁止
-              upsertSessionName(newResult.author)
-              ycomment.elm.style.display = 'none'
-            }
-            break
+          // case 'InvalidMention':
+          //   // 存在しないユーザー宛のメンションを使用
+          //   if (useInvalidMentionSensitive) {
+          //     // 存在しないユーザーに対してメンションを送ったユーザーを永続的に禁止
+          //     upsertName(newResult.author)
+          //     ycomment.elm.style.display = 'none'
+          //   }
+          //   else if (useTempraryInvalidMentionSensitive) {
+          //     // 存在しないユーザーに対してメンションを送ったユーザーを一時的に禁止
+          //     upsertSessionName(newResult.author)
+          //     ycomment.elm.style.display = 'none'
+          //   }
+          //   break
         }
       }
     }

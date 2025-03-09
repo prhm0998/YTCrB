@@ -7,7 +7,7 @@ export const getDefaultUserOption = (): UserOption => ({
   useTempraryWordSensitive: false,
   useWordSensitive: false,
   useTempraryMensionSensitive: false,
-  useMentionSensitive: false,
-  useTempraryInvalidMentionSensitive: false,
-  useInvalidMentionSensitive: false
+  useMentionSensitive: false
+  // useTempraryInvalidMentionSensitive: false
+  // useInvalidMentionSensitive: false
 })

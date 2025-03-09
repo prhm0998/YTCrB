@@ -1,7 +1,7 @@
 export interface YCommentBody {
   mentions: string[];
   text: string;
-  invalidMention: boolean;
+  // invalidMention: boolean;
 }
 
 /**
@@ -28,11 +28,12 @@ export default function getComment(elm: HTMLElement): YComment {
 
 function extractTextFromElement(element: Element | null): YCommentBody {
   if (!element) {
-    return { mentions: [], text: '', invalidMention: false }; // 要素がない場合、空のデータを返す
+    // return { mentions: [], text: '', invalidMention: false }; // 要素がない場合、空のデータを返す
+    return { mentions: [], text: '' }; // 要素がない場合、空のデータを返す
   }
   const anchorTexts: string[] = [];
   let outerText = '';
-  let invalidMention = false
+  // let invalidMention = false
 
   // 子ノードをループ
   element.childNodes.forEach((node) => {
@@ -48,12 +49,13 @@ function extractTextFromElement(element: Element | null): YCommentBody {
     else if (node.nodeType === Node.TEXT_NODE) {
       const { textContent } = node
       if (textContent) {
-        const invalidMentionPattern = new RegExp(/^(@\S+)\s/); // 空白以外の文字にマッチするよう修正
-        invalidMention = invalidMentionPattern.test(textContent)
+        // const invalidMentionPattern = new RegExp(/^(@\S+)\s/); // 空白以外の文字にマッチするよう修正
+        // invalidMention = invalidMentionPattern.test(textContent)
         // 一番外側の span に囲まれていないテキスト
         outerText += textContent.trim();
       }
     }
   });
-  return { mentions: anchorTexts, text: outerText, invalidMention };
+  // return { mentions: anchorTexts, text: outerText, invalidMention };
+  return { mentions: anchorTexts, text: outerText }
 }

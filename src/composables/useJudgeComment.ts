@@ -6,7 +6,7 @@ import { UserOption } from './useUserOption'
 export type JudgeResult =
   | { isGuilty: true; type: 'Name' | 'Mention' | 'Session'; author: string; matchedUser: string }
   | { isGuilty: true; type: 'Word'; author: string; matchedWord: string }
-  | { isGuilty: true; type: 'InvalidMention' | 'Uncategorized'; author: string }
+  | { isGuilty: true; type: 'Uncategorized'; author: string }
   | { isGuilty: false; type?: never; author?: never; matchedUser?: never; matchedWord?: never };
 
 export function useJudgeComment(
@@ -17,7 +17,7 @@ export function useJudgeComment(
   userOption: Ref<UserOption>
 ): Ref<JudgeResult> {
 
-  const { author, commentBody: { mentions, text: commentText, invalidMention } } = commentObj
+  const { author, commentBody: { mentions, text: commentText } } = commentObj
 
   const result = computed<JudgeResult>(() => {
     // ignoreName
@@ -65,15 +65,15 @@ export function useJudgeComment(
       }
     }
 
-    // invalidMention
-    const matchedInvalidMention = (userOption.value.useInvalidMentionSensitive || userOption.value.useTempraryInvalidMentionSensitive) && invalidMention
-    if (matchedInvalidMention) {
-      return {
-        isGuilty: true,
-        type: 'InvalidMention',
-        author
-      }
-    }
+    //// invalidMention
+    //const matchedInvalidMention = (userOption.value.useInvalidMentionSensitive || userOption.value.useTempraryInvalidMentionSensitive) && invalidMention
+    //if (matchedInvalidMention) {
+    //  return {
+    //    isGuilty: true,
+    //    type: 'InvalidMention',
+    //    author
+    //  }
+    //}
 
     return { isGuilty: false }
   })
