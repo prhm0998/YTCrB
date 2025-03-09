@@ -15,9 +15,9 @@ const options: UserOptionEntry[] = [
   { key: 'useTempraryWordSensitive', label: '禁止語句を使用したユーザーを一時的に非表示にします' },
   { key: 'useWordSensitive', label: '禁止語句を使用したユーザーを非表示ユーザーに登録します' },
   { key: 'useTempraryMensionSensitive', label: '非表示ユーザーへメンションしたユーザーを一時的に非表示にします' },
-  { key: 'useMentionSensitive', label: '非表示ユーザーへメンションしたユーザーを非表示ユーザーに登録します' },
-  { key: 'useTempraryInvalidMentionSensitive', label: '存在しないユーザーへメンションしたユーザーを一時的に非表示にします' },
-  { key: 'useInvalidMentionSensitive', label: '存在しないユーザーへメンションしたユーザーを非表示ユーザーに登録します' }
+  { key: 'useMentionSensitive', label: '非表示ユーザーへメンションしたユーザーを非表示ユーザーに登録します' }
+  // { key: 'useTempraryInvalidMentionSensitive', label: '存在しないユーザーへメンションしたユーザーを一時的に非表示にします' },
+  // { key: 'useInvalidMentionSensitive', label: '存在しないユーザーへメンションしたユーザーを非表示ユーザーに登録します' }
 ]
 </script>
 

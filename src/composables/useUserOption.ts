@@ -12,8 +12,8 @@ export interface UserOption {
   useTempraryWordSensitive: boolean
   useMentionSensitive: boolean
   useTempraryMensionSensitive: boolean
-  useInvalidMentionSensitive: boolean
-  useTempraryInvalidMentionSensitive: boolean
+  // useInvalidMentionSensitive: boolean
+  // useTempraryInvalidMentionSensitive: boolean
 }
 
 export type UserOptionEvent =
@@ -76,15 +76,15 @@ export default function () {
           }
         }
 
-        // useTempraryMensionSensitive, useMentionSensitive の排他制御
-        if (key === 'useTempraryInvalidMentionSensitive' || key === 'useInvalidMentionSensitive') {
-          if (memoryCache.value.useTempraryInvalidMentionSensitive && key === 'useInvalidMentionSensitive') {
-            memoryCache.value.useTempraryInvalidMentionSensitive = false;
-          }
-          else if (memoryCache.value.useInvalidMentionSensitive && key === 'useTempraryInvalidMentionSensitive') {
-            memoryCache.value.useInvalidMentionSensitive = false;
-          }
-        }
+        // // useTempraryMensionSensitive, useMentionSensitive の排他制御
+        // if (key === 'useTempraryInvalidMentionSensitive' || key === 'useInvalidMentionSensitive') {
+        //   if (memoryCache.value.useTempraryInvalidMentionSensitive && key === 'useInvalidMentionSensitive') {
+        //     memoryCache.value.useTempraryInvalidMentionSensitive = false;
+        //   }
+        //   else if (memoryCache.value.useInvalidMentionSensitive && key === 'useTempraryInvalidMentionSensitive') {
+        //     memoryCache.value.useInvalidMentionSensitive = false;
+        //   }
+        // }
 
         memoryCache.value[event.key] = !memoryCache.value[event.key]
         break;
