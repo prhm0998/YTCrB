@@ -17,6 +17,9 @@ importers:
       '@vueuse/core':
         specifier: ^12.5.0
         version: 12.5.0(typescript@5.6.3)
+      '@wxt-dev/auto-icons':
+        specifier: ^1.1.0
+        version: 1.1.0(wxt@0.20.11(@types/node@24.3.1)(jiti@2.5.1)(lightningcss@1.29.1)(rollup@4.50.1)(sass@1.85.0)(yaml@2.7.0))
       '@wxt-dev/module-vue':
         specifier: ^1.0.1
         version: 1.0.2(vite@7.1.5(@types/node@24.3.1)(jiti@2.5.1)(lightningcss@1.29.1)(sass@1.85.0)(yaml@2.7.0))(vue@3.5.13(typescript@5.6.3))(wxt@0.20.11(@types/node@24.3.1)(jiti@2.5.1)(lightningcss@1.29.1)(rollup@4.50.1)(sass@1.85.0)(yaml@2.7.0))
@@ -63,9 +66,6 @@ importers:
       '@vue/language-plugin-pug':
         specifier: ^2.2.0
         version: 2.2.0
-      '@wxt-dev/auto-icons':
-        specifier: ^1.1.0
-        version: 1.1.0(wxt@0.20.11(@types/node@24.3.1)(jiti@2.5.1)(lightningcss@1.29.1)(rollup@4.50.1)(sass@1.85.0)(yaml@2.7.0))
       chalk:
         specifier: ^5.4.1
         version: 5.4.1
