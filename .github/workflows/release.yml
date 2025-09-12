@@ -6,6 +6,7 @@ on:
       - 'test/fix-workflow-import-env'
     tags:
       - 'v[0-9]+.[0-9]+.0'  # minor以上のアップデートをトリガーにする
+  workflow_dispatch:   # 👈 手動実行を許可
 
 jobs:
   release:
