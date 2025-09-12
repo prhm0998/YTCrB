@@ -1,6 +1,5 @@
 import useStoredValue from './useStoredValue'
 import { useDebounceFn } from '@vueuse/core'
-import { getDefaultUserOption } from '@/utils/defaultUserOption'
 import filterProperties from '@/utils/filterPropertiers'
 import applyDefaultProperties from '@/utils/applyDefaultProperties'
 
@@ -18,6 +17,16 @@ export interface UserOption {
 
 export type UserOptionEvent =
   | { type: 'toggle', key: keyof UserOption }
+
+const getDefaultUserOption = (): UserOption => ({
+  enabled: true,
+  useCaseInsensitive: true,
+  useNormalize: true,
+  useTempraryWordSensitive: false,
+  useWordSensitive: false,
+  useTempraryMensionSensitive: false,
+  useMentionSensitive: false
+})
 
 export default function () {
   const defaultUserOption = getDefaultUserOption()
@@ -75,16 +84,6 @@ export default function () {
             memoryCache.value.useMentionSensitive = false;
           }
         }
-
-        // // useTempraryMensionSensitive, useMentionSensitive の排他制御
-        // if (key === 'useTempraryInvalidMentionSensitive' || key === 'useInvalidMentionSensitive') {
-        //   if (memoryCache.value.useTempraryInvalidMentionSensitive && key === 'useInvalidMentionSensitive') {
-        //     memoryCache.value.useTempraryInvalidMentionSensitive = false;
-        //   }
-        //   else if (memoryCache.value.useInvalidMentionSensitive && key === 'useTempraryInvalidMentionSensitive') {
-        //     memoryCache.value.useInvalidMentionSensitive = false;
-        //   }
-        // }
 
         memoryCache.value[event.key] = !memoryCache.value[event.key]
         break;

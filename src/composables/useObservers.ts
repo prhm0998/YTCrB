@@ -1,5 +1,4 @@
 // composables/useObservers.ts
-import { ref } from 'vue'
 
 export default function useObservers() {
   const observers = ref(new Set<MutationObserver>())

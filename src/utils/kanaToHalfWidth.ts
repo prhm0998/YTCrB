@@ -1,3 +1,9 @@
+/**
+ *
+ * @param str
+ * @returns カタカナを全角にします
+ *
+ */
 export default function kanaToHalfWidth(str: string) {
   // 濁音・半濁音
   const D_MUD = 'ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴヷヺ';
