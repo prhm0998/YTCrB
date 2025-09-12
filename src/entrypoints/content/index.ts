@@ -1,4 +1,5 @@
 // entrypoints/example-ui.content/index.ts
+
 import { createApp } from 'vue';
 import App from './App.vue';
 // import useContent from '@/composables/useContent'

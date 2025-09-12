@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContentScriptContext } from 'wxt/client';
+import { ContentScriptContext } from '#imports';
 
 const props = defineProps<{
   ctx: ContentScriptContext
@@ -8,7 +8,7 @@ const props = defineProps<{
 // localのOptionのobject
 const { state: userOption } = useUserOption()
 // localのWordのMap
-const { state: ignoreWord, upsert: upsertWord } = useIgnore('local:Word')
+const { state: ignoreWord } = useIgnore('local:Word')
 // localのNameのMap
 const { state: ignoreName, upsert: upsertName } = useIgnore('local:Name')
 // sessionのNameのMap
@@ -23,7 +23,6 @@ const { init } = useCommentObserver(
   ignoreName,
   ignoreSessionName,
   userOption,
-  upsertWord,
   upsertName,
   upsertSessionName,
   props.ctx
@@ -37,12 +36,16 @@ const { init: shortInit } = useCommentObserver(
   ignoreName,
   ignoreSessionName,
   userOption,
-  upsertWord,
   upsertName,
   upsertSessionName,
   props.ctx
 )
 shortInit()
+
+document.addEventListener('yt-service-request-completed', async () => {
+  await sleep(300)
+  init()
+});
 
 </script>
 <template>

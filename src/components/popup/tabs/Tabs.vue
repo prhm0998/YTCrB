@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { StorageItemKey } from 'wxt/storage'
+// import { StorageItemKey } from 'wxt/storage'
 import { IconRaiseHandOff, IconPenOff, IconGear } from '@iconify-prerendered/vue-pepicons-pop'
 import IgnoreList from './ignorelist/IgnoreList.vue'
 import UserOption from './useroption/UserOption.vue'

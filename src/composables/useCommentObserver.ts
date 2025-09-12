@@ -1,8 +1,8 @@
 import { Ref, ref } from 'vue'
-import { ContentScriptContext } from 'wxt/client'
 import { IgnoreWordReg } from './useIgnoreWordsReg'
 import { watchElementRemoval } from '@/utils/watchElementRemoval'
 import { JudgeResult } from './useJudgeComment'
+import type { ContentScriptContext } from '#imports'
 
 export function useCommentObserver(
   commentOuterSelector: string,
@@ -10,7 +10,6 @@ export function useCommentObserver(
   ignoreName: Ref<Map<string, IgnoreBase>>,
   ignoreSessionName: Ref<Map<string, IgnoreBase>>,
   userOption: Ref<UserOption>,
-  upsertWord: (word: string) => void,
   upsertName: (name: string) => void,
   upsertSessionName: (name: string) => void,
   ctx: ContentScriptContext
@@ -62,9 +61,9 @@ export function useCommentObserver(
 
   function processComment(comment: HTMLElement) {
     const newComment: YComment = getComment(comment)
-    useAddButton(newComment, ctx, init, upsertWord, upsertName)
+    useAddButton(newComment, ctx, init, upsertName)
     const judgeResult: Ref<JudgeResult> = useJudgeComment(newComment, ignoreWordReg, ignoreName, ignoreSessionName, userOption)
-    useBannedProcess(newComment, judgeResult, userOption, upsertWord, upsertName, upsertSessionName)
+    useBannedProcess(newComment, judgeResult, userOption, upsertName, upsertSessionName)
   }
 
   return { init }

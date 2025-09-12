@@ -49,13 +49,9 @@ function extractTextFromElement(element: Element | null): YCommentBody {
     else if (node.nodeType === Node.TEXT_NODE) {
       const { textContent } = node
       if (textContent) {
-        // const invalidMentionPattern = new RegExp(/^(@\S+)\s/); // 空白以外の文字にマッチするよう修正
-        // invalidMention = invalidMentionPattern.test(textContent)
-        // 一番外側の span に囲まれていないテキスト
         outerText += textContent.trim();
       }
     }
   });
-  // return { mentions: anchorTexts, text: outerText, invalidMention };
   return { mentions: anchorTexts, text: outerText }
 }

@@ -1,6 +1,6 @@
 import { UseAsyncStateOptions, useAsyncState } from '@vueuse/core';
-import { computed, onMounted, onUnmounted } from 'vue';
-import { storage, StorageItemKey } from 'wxt/storage';
+import { computed, onMounted } from 'vue';
+//import { storage, StorageItemKey } from 'wxt/storage';
 
 export default function <T>(
   key: StorageItemKey,
@@ -24,8 +24,6 @@ export default function <T>(
     unwatch = storage.watch<T>(key, async (newValue) => {
       state.value = newValue ?? initialValue;
     });
-  });
-  onUnmounted(() => {
     unwatch?.();
   });
 

@@ -47,14 +47,12 @@ export default [
       // js rules
       'comma-dangle': ['error', 'never'],
       'brace-style': ['error', 'stroustrup'],
-      // 'object-curly-spacing': 'warn',
       'no-unused-vars': 'off',
       'no-undef': 'off',
       'no-trailing-spaces': 'warn',
       'eslint-disable-next-line': 'off',
       'html-closing-bracket-newline': 'off',
       quotes: ['error', 'single']
-      // 'function-paren-newline': ['error', 'consistent']
     }
   }
 ];
