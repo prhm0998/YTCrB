@@ -12,11 +12,9 @@ export function useBannedProcess(
     if (newResult.isGuilty && newUserOption.enabled) {
       if (!hasNoneStyle(ycomment.elm)) {
         const { useWordSensitive,
-          useTempraryWordSensitive,
+          useTemporaryWordSensitive,
           useMentionSensitive,
-          useTempraryMensionSensitive
-          // useInvalidMentionSensitive,
-          // useTempraryInvalidMentionSensitive
+          useTemporaryMentionSensitive
         } = newUserOption
         switch (newResult?.type) {
           case 'Word':
@@ -27,7 +25,7 @@ export function useBannedProcess(
               upsertName(newResult.author)
               ycomment.elm.style.display = 'none'
             }
-            else if (useTempraryWordSensitive) {
+            else if (useTemporaryWordSensitive) {
               // 禁止ワードを使ったユーザーを一時的に禁止
               upsertSessionName(newResult.author)
               ycomment.elm.style.display = 'none'
@@ -44,7 +42,7 @@ export function useBannedProcess(
               upsertName(newResult.author)
               ycomment.elm.style.display = 'none'
             }
-            else if (useTempraryMensionSensitive) {
+            else if (useTemporaryMentionSensitive) {
               // 禁止ネームに対してメンションを送ったユーザーを一時的に禁止
               upsertSessionName(newResult.author)
               ycomment.elm.style.display = 'none'

@@ -1,0 +1,15 @@
+format:
+  date: YY/MM/DD
+  time: HH:mm:ss
+dialog:
+  button:
+    submit: 登録
+    delete: 取消
+userOption:
+  enabled: NG設定を有効化する
+  useNormalize: ひらがな・カタカナを区別しない
+  useCaseInsensitive: 大文字・小文字を区別しない
+  useTemporaryWordSensitive: 禁止語句を使用したユーザーを一時的に非表示にします
+  useWordSensitive: 禁止語句を使用したユーザーを非表示ユーザーに登録します
+  useTemporaryMentionSensitive: 非表示ユーザーへメンションしたユーザーを一時的に非表示ユーザーに登録します
+  useMentionSensitive: 非表示ユーザーへメンションしたユーザーを非表示ユーザーに登録します

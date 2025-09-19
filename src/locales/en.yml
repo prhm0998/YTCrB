@@ -1,0 +1,15 @@
+format:
+  date: MM/DD/YY
+  time: HH:mm:ss
+dialog:
+  button:
+    submit: Submit
+    delete: Delete
+userOption:
+  enabled: Enable Hide Settings
+  useNormalize: Ignore differences between Hiragana and Katakana
+  useCaseInsensitive: Ignore case differences
+  useTemporaryWordSensitive: Temporarily hide users who use ignore words
+  useWordSensitive: Hide users who use ignore words
+  useTemporaryMentionSensitive: Temporarily hide users who mention ignore users
+  useMentionSensitive: Hide users who mention ignore users

@@ -9,15 +9,13 @@ export interface UserOptionEntry {
   label: string
 }
 const options: UserOptionEntry[] = [
-  { key: 'enabled', label: 'NG設定を有効化する' },
-  { key: 'useNormalize', label: 'ひらがな・カタカナを区別しない' },
-  { key: 'useCaseInsensitive', label: '大文字・小文字を区別しない' },
-  { key: 'useTempraryWordSensitive', label: '禁止語句を使用したユーザーを一時的に非表示にします' },
-  { key: 'useWordSensitive', label: '禁止語句を使用したユーザーを非表示ユーザーに登録します' },
-  { key: 'useTempraryMensionSensitive', label: '非表示ユーザーへメンションしたユーザーを一時的に非表示にします' },
-  { key: 'useMentionSensitive', label: '非表示ユーザーへメンションしたユーザーを非表示ユーザーに登録します' }
-  // { key: 'useTempraryInvalidMentionSensitive', label: '存在しないユーザーへメンションしたユーザーを一時的に非表示にします' },
-  // { key: 'useInvalidMentionSensitive', label: '存在しないユーザーへメンションしたユーザーを非表示ユーザーに登録します' }
+  { key: 'enabled', label: i18n.t('userOption.enabled') },
+  { key: 'useNormalize', label: i18n.t('userOption.useNormalize') },
+  { key: 'useCaseInsensitive', label: i18n.t('userOption.useCaseInsensitive') },
+  { key: 'useTemporaryWordSensitive', label: i18n.t('userOption.useTemporaryWordSensitive') },
+  { key: 'useWordSensitive', label: i18n.t('userOption.useWordSensitive') },
+  { key: 'useTemporaryMentionSensitive', label: i18n.t('userOption.useTemporaryMentionSensitive') },
+  { key: 'useMentionSensitive', label: i18n.t('userOption.useMentionSensitive') }
 ]
 </script>
 
