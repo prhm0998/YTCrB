@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
 
 @utility gutter-stable {
   scrollbar-gutter: stable;

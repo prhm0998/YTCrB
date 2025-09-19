@@ -20,7 +20,7 @@ const activeTab = ref<TabType>(tabs[0])
 </script>
 
 <template>
-  <div class="tab-container">
+  <div class="">
     <div class="border-b border-gray-200 dark:border-gray-700">
       <ul class="dark:text-gray-400 flex flex-wrap font-medium gap-3 text-gray-500 text-lg">
         <li v-for="tab in tabs" :key="tab.key" class="me-2" @click="activeTab = tab">
@@ -33,7 +33,7 @@ const activeTab = ref<TabType>(tabs[0])
           </a>
         </li>
       </ul>
-      <div class="px-2 tab-content">
+      <div class="px-2">
         <IgnoreList v-if="activeTab.key === 'local:Word'" ref="ignoreListRef" :model-value="activeTab" :regexp="true"
           :edit="true" />
         <IgnoreList v-else-if="activeTab.key === 'local:Name'" ref="ignoreListRef" :model-value="activeTab" />

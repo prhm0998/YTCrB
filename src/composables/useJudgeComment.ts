@@ -65,16 +65,6 @@ export function useJudgeComment(
       }
     }
 
-    //// invalidMention
-    //const matchedInvalidMention = (userOption.value.useInvalidMentionSensitive || userOption.value.useTempraryInvalidMentionSensitive) && invalidMention
-    //if (matchedInvalidMention) {
-    //  return {
-    //    isGuilty: true,
-    //    type: 'InvalidMention',
-    //    author
-    //  }
-    //}
-
     return { isGuilty: false }
   })
 

@@ -8,11 +8,9 @@ export interface UserOption {
   useNormalize: boolean
   useCaseInsensitive: boolean
   useWordSensitive: boolean
-  useTempraryWordSensitive: boolean
+  useTemporaryWordSensitive: boolean
   useMentionSensitive: boolean
-  useTempraryMensionSensitive: boolean
-  // useInvalidMentionSensitive: boolean
-  // useTempraryInvalidMentionSensitive: boolean
+  useTemporaryMentionSensitive: boolean
 }
 
 export type UserOptionEvent =
@@ -22,9 +20,9 @@ const getDefaultUserOption = (): UserOption => ({
   enabled: true,
   useCaseInsensitive: true,
   useNormalize: true,
-  useTempraryWordSensitive: false,
+  useTemporaryWordSensitive: false,
   useWordSensitive: false,
-  useTempraryMensionSensitive: false,
+  useTemporaryMentionSensitive: false,
   useMentionSensitive: false
 })
 
@@ -65,22 +63,22 @@ export default function () {
     const { type, key } = event;
     switch (type) {
       case 'toggle':
-        // useTempraryWordSensitive, useWordSensitive の排他制御
-        if (key === 'useTempraryWordSensitive' || key === 'useWordSensitive') {
-          if (memoryCache.value.useTempraryWordSensitive && key === 'useWordSensitive') {
-            memoryCache.value.useTempraryWordSensitive = false;
+        // useTemporaryWordSensitive, useWordSensitive の排他制御
+        if (key === 'useTemporaryWordSensitive' || key === 'useWordSensitive') {
+          if (memoryCache.value.useTemporaryWordSensitive && key === 'useWordSensitive') {
+            memoryCache.value.useTemporaryWordSensitive = false;
           }
-          else if (memoryCache.value.useWordSensitive && key === 'useTempraryWordSensitive') {
+          else if (memoryCache.value.useWordSensitive && key === 'useTemporaryWordSensitive') {
             memoryCache.value.useWordSensitive = false;
           }
         }
 
-        // useTempraryMensionSensitive, useMentionSensitive の排他制御
-        if (key === 'useTempraryMensionSensitive' || key === 'useMentionSensitive') {
-          if (memoryCache.value.useTempraryMensionSensitive && key === 'useMentionSensitive') {
-            memoryCache.value.useTempraryMensionSensitive = false;
+        // useTemporaryMentionSensitive, useMentionSensitive の排他制御
+        if (key === 'useTemporaryMentionSensitive' || key === 'useMentionSensitive') {
+          if (memoryCache.value.useTemporaryMentionSensitive && key === 'useMentionSensitive') {
+            memoryCache.value.useTemporaryMentionSensitive = false;
           }
-          else if (memoryCache.value.useMentionSensitive && key === 'useTempraryMensionSensitive') {
+          else if (memoryCache.value.useMentionSensitive && key === 'useTemporaryMentionSensitive') {
             memoryCache.value.useMentionSensitive = false;
           }
         }
