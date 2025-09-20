@@ -28,7 +28,7 @@ export default function (key: StorageItemKey) {
         acc.set(id, {
           id,
           submitAt: dayjs(submitISO),
-          lastFindAt: dayjs(lastFindISO)
+          lastFindAt: dayjs(lastFindISO),
         })
         return acc
       }, new Map<IgnoreBase['id'], IgnoreBase>())
@@ -43,7 +43,7 @@ export default function (key: StorageItemKey) {
     return Array.from(memoryCache.value?.values()).sort((a, b) => a.lastFindAt.isBefore(b.lastFindAt) ? 1 : -1).map(({ id, submitAt, lastFindAt }) => ({
       id,
       submitISO: submitAt.toISOString(),
-      lastFindISO: lastFindAt.toISOString()
+      lastFindISO: lastFindAt.toISOString(),
     }))
   }
 
@@ -100,7 +100,7 @@ export default function (key: StorageItemKey) {
     memoryCache.value.set(id, {
       id,
       submitAt,
-      lastFindAt
+      lastFindAt,
     })
     saveToStorage()
   }
@@ -115,7 +115,7 @@ export default function (key: StorageItemKey) {
     upsert,
     insert,
     remove,
-    insertOrReplace
+    insertOrReplace,
   }
 
 }

@@ -23,7 +23,7 @@ const getDefaultUserOption = (): UserOption => ({
   useTemporaryWordSensitive: false,
   useWordSensitive: false,
   useTemporaryMentionSensitive: false,
-  useMentionSensitive: false
+  useMentionSensitive: false,
 })
 
 export default function () {
@@ -60,38 +60,38 @@ export default function () {
   }, 100, { maxWait: 1000 })
 
   const updateUserOption = (event: UserOptionEvent) => {
-    const { type, key } = event;
+    const { type, key } = event
     switch (type) {
       case 'toggle':
         // useTemporaryWordSensitive, useWordSensitive の排他制御
         if (key === 'useTemporaryWordSensitive' || key === 'useWordSensitive') {
           if (memoryCache.value.useTemporaryWordSensitive && key === 'useWordSensitive') {
-            memoryCache.value.useTemporaryWordSensitive = false;
+            memoryCache.value.useTemporaryWordSensitive = false
           }
           else if (memoryCache.value.useWordSensitive && key === 'useTemporaryWordSensitive') {
-            memoryCache.value.useWordSensitive = false;
+            memoryCache.value.useWordSensitive = false
           }
         }
 
         // useTemporaryMentionSensitive, useMentionSensitive の排他制御
         if (key === 'useTemporaryMentionSensitive' || key === 'useMentionSensitive') {
           if (memoryCache.value.useTemporaryMentionSensitive && key === 'useMentionSensitive') {
-            memoryCache.value.useTemporaryMentionSensitive = false;
+            memoryCache.value.useTemporaryMentionSensitive = false
           }
           else if (memoryCache.value.useMentionSensitive && key === 'useTemporaryMentionSensitive') {
-            memoryCache.value.useMentionSensitive = false;
+            memoryCache.value.useMentionSensitive = false
           }
         }
 
         memoryCache.value[event.key] = !memoryCache.value[event.key]
-        break;
+        break
       default:
-        break;
+        break
     }
     saveToStorage()
   }
   return {
     state: (memoryCache),
-    updateUserOption
+    updateUserOption,
   }
 }

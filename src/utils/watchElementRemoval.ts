@@ -13,19 +13,19 @@ export const watchElementRemoval = (
 ) => {
   // 要素が既にドキュメントに存在しない場合
   if (!element.isConnected) {
-    console.warn('Element is not connected to the document, it might already be removed.');
-    callback(); // 即座にコールバックを呼び出す
-    return;
+    console.warn('Element is not connected to the document, it might already be removed.')
+    callback() // 即座にコールバックを呼び出す
+    return
   }
 
   // 指定間隔で要素が削除されているかをチェックする
   const checkInterval = setInterval(() => {
     if (!element.isConnected) {
-      clearInterval(checkInterval); // チェックを停止
-      callback(); // コールバックを実行
+      clearInterval(checkInterval) // チェックを停止
+      callback() // コールバックを実行
     }
-  }, interval);
+  }, interval)
 
   // 監視を停止するためのクリーンアップ関数を返す
-  return () => clearInterval(checkInterval);
-};
+  return () => clearInterval(checkInterval)
+}

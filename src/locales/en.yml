@@ -8,7 +8,7 @@ dialog:
 userOption:
   enabled: Enable Hide Settings
   useNormalize: Ignore differences between Hiragana and Katakana
-  useCaseInsensitive: Ignore case differences
+  useCaseInsensitive: Ignore differences between uppercase and lowercase letters
   useTemporaryWordSensitive: Temporarily hide users who use ignore words
   useWordSensitive: Hide users who use ignore words
   useTemporaryMentionSensitive: Temporarily hide users who mention ignore users

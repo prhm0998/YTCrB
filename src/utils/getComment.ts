@@ -15,43 +15,43 @@ export interface YComment {
 }
 
 export default function getComment(elm: HTMLElement): YComment {
-  const commentElement = elm.querySelector('#content-text span');
-  const commentBody = extractTextFromElement(commentElement);
+  const commentElement = elm.querySelector('#content-text span')
+  const commentBody = extractTextFromElement(commentElement)
 
   return {
     elm,
     insertElm: elm.querySelector('#body.ytd-comment-view-model ytd-comment-engagement-bar #toolbar') ?? null,
     author: elm.querySelector('#author-text span')?.textContent?.trim() ?? '',
-    commentBody: commentBody
-  };
+    commentBody: commentBody,
+  }
 }
 
 function extractTextFromElement(element: Element | null): YCommentBody {
   if (!element) {
     // return { mentions: [], text: '', invalidMention: false }; // 要素がない場合、空のデータを返す
-    return { mentions: [], text: '' }; // 要素がない場合、空のデータを返す
+    return { mentions: [], text: '' } // 要素がない場合、空のデータを返す
   }
-  const anchorTexts: string[] = [];
-  let outerText = '';
+  const anchorTexts: string[] = []
+  let outerText = ''
   // let invalidMention = false
 
   // 子ノードをループ
   element.childNodes.forEach((node) => {
     if (node.nodeType === Node.ELEMENT_NODE) {
-      const el = node as HTMLElement;
+      const el = node as HTMLElement
       if (el.tagName === 'SPAN') {
         // SPAN 内の <a> タグのテキストを取得
         el.querySelectorAll('a').forEach((a) => {
-          anchorTexts.push(a.textContent?.trim() || '');
-        });
+          anchorTexts.push(a.textContent?.trim() || '')
+        })
       }
     }
     else if (node.nodeType === Node.TEXT_NODE) {
       const { textContent } = node
       if (textContent) {
-        outerText += textContent.trim();
+        outerText += textContent.trim()
       }
     }
-  });
+  })
   return { mentions: anchorTexts, text: outerText }
 }

@@ -7,9 +7,8 @@ export type JudgeResult =
   | { isGuilty: true; type: 'Name' | 'Mention' | 'Session'; author: string; matchedUser: string }
   | { isGuilty: true; type: 'Word'; author: string; matchedWord: string }
   | { isGuilty: true; type: 'Uncategorized'; author: string }
-  | { isGuilty: false; type?: never; author?: never; matchedUser?: never; matchedWord?: never };
-
-export function useJudgeComment(
+  | { isGuilty: false; type?: never; author?: never; matchedUser?: never; matchedWord?: never }
+;export function useJudgeComment(
   commentObj: YComment,
   ignoreWordReg: Ref<IgnoreWordReg[]>,
   ignoreName: Ref<Map<string, IgnoreBase>>,
@@ -27,7 +26,7 @@ export function useJudgeComment(
         isGuilty: true,
         type: 'Name',
         author,
-        matchedUser: author
+        matchedUser: author,
       }
     }
 
@@ -38,7 +37,7 @@ export function useJudgeComment(
         isGuilty: true,
         type: 'Word',
         author,
-        matchedWord: matchedWordKey
+        matchedWord: matchedWordKey,
       }
     }
 
@@ -50,7 +49,7 @@ export function useJudgeComment(
         isGuilty: true,
         type: 'Mention',
         author,
-        matchedUser: matchedMentions
+        matchedUser: matchedMentions,
       }
     }
 
@@ -61,7 +60,7 @@ export function useJudgeComment(
         isGuilty: true,
         type: 'Session',
         author,
-        matchedUser: author
+        matchedUser: author,
       }
     }
 
