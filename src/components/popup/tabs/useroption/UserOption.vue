@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useUserOption, { type UserOption } from '@/composables/useUserOption'
-import Checkbox from './CheckBox.vue';
-import Header from './Header.vue';
+import Checkbox from './CheckBox.vue'
+import Header from './Header.vue'
 const { state, updateUserOption } = useUserOption()
 
 export interface UserOptionEntry {
@@ -15,7 +15,7 @@ const options: UserOptionEntry[] = [
   { key: 'useTemporaryWordSensitive', label: i18n.t('userOption.useTemporaryWordSensitive') },
   { key: 'useWordSensitive', label: i18n.t('userOption.useWordSensitive') },
   { key: 'useTemporaryMentionSensitive', label: i18n.t('userOption.useTemporaryMentionSensitive') },
-  { key: 'useMentionSensitive', label: i18n.t('userOption.useMentionSensitive') }
+  { key: 'useMentionSensitive', label: i18n.t('userOption.useMentionSensitive') },
 ]
 </script>
 

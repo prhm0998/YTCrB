@@ -1,6 +1,4 @@
-import { UseAsyncStateOptions, useAsyncState } from '@vueuse/core';
-import { computed, onMounted } from 'vue';
-//import { storage, StorageItemKey } from 'wxt/storage';
+import { UseAsyncStateOptions, useAsyncState } from '@vueuse/core'
 
 export default function <T>(
   key: StorageItemKey,
@@ -16,28 +14,27 @@ export default function <T>(
     async () => (await storage.getItem(key, { fallback: initialValue })) ?? initialValue,
     initialValue,
     opts
-  );
+  )
 
   // Listen for changes
-  let unwatch: (() => void) | undefined;
+  let unwatch: (() => void) | undefined
   onMounted(() => {
     unwatch = storage.watch<T>(key, async (newValue) => {
-      state.value = newValue ?? initialValue;
-    });
-    unwatch?.();
-  });
-
+      state.value = newValue ?? initialValue
+    })
+    unwatch?.()
+  })
   return {
     // Use a writable computed ref to write updates to storage
     state: computed({
       get() {
-        return state.value;
+        return state.value
       },
       set(newValue) {
-        void storage.setItem(key, newValue);
-        state.value = newValue;
-      }
+        void storage.setItem(key, newValue)
+        state.value = newValue
+      },
     }),
-    ...asyncState
-  };
+    ...asyncState,
+  }
 }

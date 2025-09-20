@@ -1,4 +1,4 @@
-import type { ContentScriptContext } from '#imports';
+import type { ContentScriptContext } from '#imports'
 import UserButtons from '@/components/external/UserButtons.vue'
 //import { ContentScriptContext } from 'wxt/client'
 
@@ -8,7 +8,7 @@ export default function (
   init: () => void,
   upsertName: (name: string) => void
 ) {
-  const { insertElm, author: name } = comment;
+  const { insertElm, author: name } = comment
   if (!insertElm) return
   // appendがlastなので探すのは子孫のみ、兄弟要素に追加した時は別ロジックが必要
   const alreadySetup = insertElm.querySelector('#WXT-FIELD')
@@ -27,9 +27,9 @@ export default function (
       return createApp(UserButtons, {
         upsertName,
         name,
-        onIgnoreAdd: () => init()
+        onIgnoreAdd: () => init(),
       }).mount(container)
-    }
+    },
   })
   ui.mount()
 }

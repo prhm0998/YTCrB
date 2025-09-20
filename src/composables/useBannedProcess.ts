@@ -14,7 +14,7 @@ export function useBannedProcess(
         const { useWordSensitive,
           useTemporaryWordSensitive,
           useMentionSensitive,
-          useTemporaryMentionSensitive
+          useTemporaryMentionSensitive,
         } = newUserOption
         switch (newResult?.type) {
           case 'Word':

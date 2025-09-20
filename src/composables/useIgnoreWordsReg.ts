@@ -24,7 +24,7 @@ export default function useIgnoreWordsReg(
       const normalizedKey = option.value.useNormalize ? normalizedWord(key) : key
       return {
         key,
-        regExp: new RegExp(normalizedKey, option.value.useCaseInsensitive ? 'i' : '')
+        regExp: new RegExp(normalizedKey, option.value.useCaseInsensitive ? 'i' : ''),
       } as IgnoreWordReg
     }))
   return { ignoreWordReg }

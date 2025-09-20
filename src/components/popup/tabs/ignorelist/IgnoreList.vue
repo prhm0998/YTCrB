@@ -11,8 +11,8 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   regexp: false,
-  edit: false
-});
+  edit: false,
+})
 const { state, insert, remove } = useIgnore(props.modelValue.key)
 const userInput = ref('')
 const now = dayjs()
@@ -52,8 +52,8 @@ const dataEdit = (key: string) => {
 
 defineExpose({ focus })
 const isLongId = (length: number) => {
-  return length > 27; // この値は適宜調整してください
-};
+  return length > 27 // この値は適宜調整してください
+}
 
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContentScriptContext } from '#imports';
+import { ContentScriptContext } from '#imports'
 
 const props = defineProps<{
   ctx: ContentScriptContext
@@ -45,7 +45,7 @@ shortInit()
 document.addEventListener('yt-service-request-completed', async () => {
   await sleep(300)
   init()
-});
+})
 
 </script>
 <template>

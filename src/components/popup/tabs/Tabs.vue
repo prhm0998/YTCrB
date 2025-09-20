@@ -13,7 +13,7 @@ export interface TabType {
 const tabs: TabType[] = [
   { key: 'local:Word', name: 'Word' },
   { key: 'local:Name', name: 'Name' },
-  { key: 'local:Option', name: 'Option' }
+  { key: 'local:Option', name: 'Option' },
 ]
 
 const activeTab = ref<TabType>(tabs[0])
