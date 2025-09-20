@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import CheckBox from '@/components/popup/tabs/useroption/CheckBox.vue'
+import Header from '@/components/popup/tabs/useroption/Header.vue'
 import useUserOption, { type UserOption } from '@/composables/useUserOption'
-import Checkbox from './CheckBox.vue'
-import Header from './Header.vue'
 const { state, updateUserOption } = useUserOption()
 
 export interface UserOptionEntry {
@@ -23,7 +23,7 @@ const options: UserOptionEntry[] = [
   <div class="box-border flex flex-col h-[420px] w-[520px]">
     <Header />
     <div v-if="state" class="flex flex-col flex-grow gap-2">
-      <Checkbox v-for="option in options" :id="option.key" :key="option.key" :label="option.label"
+      <CheckBox v-for="option in options" :id="option.key" :key="option.key" :label="option.label"
         :model-value="state[option.key]" @update:model-value="updateUserOption({ type: 'toggle', key: option.key })" />
     </div>
   </div>

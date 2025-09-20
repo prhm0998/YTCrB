@@ -1,20 +1,15 @@
-import { Ref, computed } from 'vue'
-import { IgnoreBase } from '@/composables/useIgnore'
-import { IgnoreWordReg } from '@/composables/useIgnoreWordsReg'
-import { UserOption } from './useUserOption'
-
 export type JudgeResult =
   | { isGuilty: true; type: 'Name' | 'Mention' | 'Session'; author: string; matchedUser: string }
   | { isGuilty: true; type: 'Word'; author: string; matchedWord: string }
   | { isGuilty: true; type: 'Uncategorized'; author: string }
   | { isGuilty: false; type?: never; author?: never; matchedUser?: never; matchedWord?: never }
-;export function useJudgeComment(
-  commentObj: YComment,
-  ignoreWordReg: Ref<IgnoreWordReg[]>,
-  ignoreName: Ref<Map<string, IgnoreBase>>,
-  ignoreSessionName: Ref<Map<string, IgnoreBase>>,
-  userOption: Ref<UserOption>
-): Ref<JudgeResult> {
+  ; export function useJudgeComment(
+    commentObj: YComment,
+    ignoreWordReg: Ref<IgnoreWordReg[]>,
+    ignoreName: Ref<Map<string, IgnoreBase>>,
+    ignoreSessionName: Ref<Map<string, IgnoreBase>>,
+    userOption: Ref<UserOption>
+  ): Ref<JudgeResult> {
 
   const { author, commentBody: { mentions, text: commentText } } = commentObj
 

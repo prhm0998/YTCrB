@@ -1,7 +1,3 @@
-import { Ref, ref } from 'vue'
-import { IgnoreWordReg } from './useIgnoreWordsReg'
-import { watchElementRemoval } from '@/utils/watchElementRemoval'
-import { JudgeResult } from './useJudgeComment'
 import type { ContentScriptContext } from '#imports'
 
 export function useCommentObserver(

@@ -1,5 +1,3 @@
-// entrypoints/example-ui.content/index.ts
-
 import { createApp } from 'vue'
 import App from './App.vue'
 export default defineContentScript({

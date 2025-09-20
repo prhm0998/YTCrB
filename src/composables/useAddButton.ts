@@ -1,6 +1,5 @@
 import type { ContentScriptContext } from '#imports'
 import UserButtons from '@/components/external/UserButtons.vue'
-//import { ContentScriptContext } from 'wxt/client'
 
 export default function (
   comment: YComment,
