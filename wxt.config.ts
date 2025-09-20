@@ -25,6 +25,6 @@ export default defineConfig({
     permissions: ['storage'],
     name: process.env.NODE_ENV === 'production' ? import.meta.env.WXT_EXT_NAME : `(Dev)${import.meta.env.WXT_EXT_NAME}`,
     description: import.meta.env.WXT_EXT_DESC,
-    default_locale: 'ja',
+    default_locale: 'en',
   }),
 })

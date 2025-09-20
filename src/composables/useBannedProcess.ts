@@ -1,6 +1,3 @@
-import { JudgeResult } from '@/composables/useJudgeComment'
-import { UserOption } from '@/composables/useUserOption'
-
 export function useBannedProcess(
   ycomment: YComment,
   result: Ref<JudgeResult>,

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import dayjs from 'dayjs'
-import { TabType } from '../Tabs.vue'
-import Header from './Header.vue'
+import RemoveButton from '@/components/popup/tabs/ignorelist/RemoveButton.vue'
+import Header from '@/components/popup/tabs/ignorelist/Header.vue'
+import { TabType } from '@/components/popup/tabs/Tabs.vue'
 
 interface Props {
   modelValue: TabType

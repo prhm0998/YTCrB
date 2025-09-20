@@ -1,7 +1,4 @@
-import useStoredValue from './useStoredValue'
 import { useDebounceFn } from '@vueuse/core'
-import filterProperties from '@/utils/filterPropertiers'
-import applyDefaultProperties from '@/utils/applyDefaultProperties'
 
 export interface UserOption {
   enabled: boolean
