@@ -5,6 +5,9 @@ import pluginVue from 'eslint-plugin-vue'
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig([
+  {
+    ignores: ['.output/', '.wxt/', 'node_modules/'],
+  },
   // 共通設定: JS/TS/Vue全般
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,vue}'],
