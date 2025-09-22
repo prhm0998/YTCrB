@@ -1,5 +1,5 @@
 import { defineConfig } from 'wxt'
-// import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite'
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -8,15 +8,13 @@ export default defineConfig({
   modules: ['@wxt-dev/i18n/module', '@wxt-dev/module-vue', '@wxt-dev/auto-icons'],
 
   vite: () => {
-    // const isProd = process.env.NODE_ENV === 'production'
     const isProd = process.env.NODE_ENV === 'production'
     return {
       esbuild: {
         drop: isProd ? ['console', 'debugger'] : [],
       },
       plugins: [
-        // vue()
-        // tailwindcss()
+        tailwindcss(),
       ],
     }
   },
